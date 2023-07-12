@@ -27,5 +27,7 @@ public class Client {
             ByteBuffer buffer = ByteBuffer.wrap(content.getBytes());
             sc.write(buffer);
         }
+
+        sc.close();
     }
 }
