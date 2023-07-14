@@ -37,10 +37,11 @@ public class Server {
                     try {
                         while (true) {
                             ByteBuffer buffer = ByteBuffer.allocate(8);
+                            int len = 0;
                             //因此这个循环只有客户端断开连接才能执行
-                            while (true) {
+                            while (len != -1) {
                                 //该方法会阻塞运行直到客户端断开连接抛出异常
-                                sc.read(buffer);
+                                len = sc.read(buffer);
                                 buffer.flip();
                                 byte[] bytes = new byte[buffer.limit() - buffer.position()];
                                 buffer.get(bytes, buffer.position(), buffer.limit());
